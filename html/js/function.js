@@ -206,6 +206,89 @@
 		var myPlayer = $("#herovideo").YTPlayer();
 	}
 
+	/* Responsive Hero Video JS */
+	var heroVideo = document.querySelector('[data-hero-video]');
+	if (heroVideo) {
+		var heroVideoMobileQuery = window.matchMedia('(max-width: 767px)');
+		var heroVideoSource = heroVideo.querySelector('source');
+		var heroVideoWrapper = heroVideo.closest('.hero-bg-video');
+		var heroVideoSection = heroVideo.closest('.hero-video');
+		var heroVideoCurrentMode = '';
+
+		function setHeroVideoPosterBackground(posterUrl) {
+			if (heroVideoWrapper && posterUrl) {
+				heroVideoWrapper.style.backgroundImage = 'url("' + posterUrl + '")';
+			}
+		}
+
+		function showHeroVideoPoster() {
+			if (heroVideoSection) {
+				heroVideoSection.classList.add('hero-video-poster-mode');
+			}
+			heroVideo.pause();
+		}
+
+		function showHeroVideoPlayback() {
+			if (heroVideoSection) {
+				heroVideoSection.classList.remove('hero-video-poster-mode');
+			}
+		}
+
+		function setResponsiveHeroVideo() {
+			var isMobileHeroVideo = heroVideoMobileQuery.matches;
+			var nextHeroVideoMode = isMobileHeroVideo ? 'mobile' : 'desktop';
+			var nextHeroVideoSrc = isMobileHeroVideo ? heroVideo.dataset.mobileSrc : heroVideo.dataset.desktopSrc;
+			var nextHeroVideoPoster = isMobileHeroVideo ? heroVideo.dataset.mobilePoster : heroVideo.dataset.desktopPoster;
+
+			setHeroVideoPosterBackground(nextHeroVideoPoster);
+
+			if (!nextHeroVideoSrc || heroVideoCurrentMode === nextHeroVideoMode) {
+				return;
+			}
+
+			if (!heroVideoSource) {
+				heroVideoSource = document.createElement('source');
+				heroVideoSource.type = 'video/mp4';
+				heroVideo.appendChild(heroVideoSource);
+			}
+
+			if (nextHeroVideoPoster) {
+				heroVideo.setAttribute('poster', nextHeroVideoPoster);
+			}
+
+			heroVideoCurrentMode = nextHeroVideoMode;
+			heroVideo.muted = true;
+			heroVideo.defaultMuted = true;
+			heroVideo.playsInline = true;
+			heroVideo.setAttribute('muted', '');
+			heroVideo.setAttribute('playsinline', '');
+			heroVideo.removeAttribute('controls');
+			showHeroVideoPlayback();
+
+			if (heroVideoSource.getAttribute('src') !== nextHeroVideoSrc) {
+				heroVideoSource.setAttribute('src', nextHeroVideoSrc);
+				heroVideo.load();
+			}
+
+			try {
+				var heroVideoPlay = heroVideo.play();
+				if (heroVideoPlay && heroVideoPlay.then) {
+					heroVideoPlay.then(showHeroVideoPlayback).catch(showHeroVideoPoster);
+				}
+			} catch (error) {
+				showHeroVideoPoster();
+			}
+		}
+
+		setResponsiveHeroVideo();
+
+		if (heroVideoMobileQuery.addEventListener) {
+			heroVideoMobileQuery.addEventListener('change', setResponsiveHeroVideo);
+		} else if (heroVideoMobileQuery.addListener) {
+			heroVideoMobileQuery.addListener(setResponsiveHeroVideo);
+		}
+	}
+
 	/* Init Counter */
 	if ($('.counter').length) {
 		$('.counter').counterUp({ delay: 6, time: 3000 });
