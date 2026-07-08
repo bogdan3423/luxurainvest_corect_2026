@@ -389,10 +389,7 @@ a:focus{
 
 .dark-section{
 	background-color: var(--primary-color);
-	background-image: url('../images/dark-section-bg-image.png');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-image: none;
 }
 
 .section-row{
@@ -531,6 +528,7 @@ header.main-header .header-sticky{
 	background: var(--white-color);
 	border-radius: 100px;
 	z-index: 100;
+	transition: border-radius 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 header.main-header .header-sticky.hide{
@@ -547,6 +545,7 @@ header.main-header .header-sticky.active{
 	background: var(--white-color);
 	border-bottom: 1px solid var(--divider-color);
 	border-radius: 0 0 20px 20px;
+	box-shadow: 0 10px 30px rgba(4, 6, 24, 0.08);
 }
 
 .navbar{
@@ -2957,6 +2956,31 @@ header.main-header .header-sticky.active{
 	display: none;
 }
 
+.page-header.about-page-header{
+	background-image: none;
+	background-color: var(--white-color);
+	padding: 220px 0 90px;
+}
+
+.page-header.about-page-header::before{
+	display: none;
+}
+
+.page-header.about-page-header .page-header-box h1{
+	color: var(--accent-secondary-color);
+	font-size: 78px;
+	font-weight: 700;
+	line-height: 1.02em;
+}
+
+.page-header.about-page-header .page-header-box ol li.breadcrumb-item{
+	color: var(--primary-color);
+}
+
+.page-header.about-page-header .page-header-box ol .breadcrumb-item+.breadcrumb-item::before{
+	color: var(--primary-color);
+}
+
 .page-header.project-page-header .project-page-title{
 	display: block;
 	font-family: var(--default-font);
@@ -3512,6 +3536,130 @@ header.main-header .header-sticky.active{
 .our-process-item.box-3 .our-process-item-content ul li{
     color: var(--white-color);
     background-color: var(--dark-divider-color);
+}
+
+.about-simple-section{
+	padding: 100px 0 70px;
+}
+
+.about-simple-intro{
+	max-width: 980px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.about-simple-intro .section-sub-title{
+	margin-bottom: 24px;
+}
+
+.about-simple-intro h2{
+	font-size: 64px;
+	margin-bottom: 36px;
+}
+
+.about-simple-copy{
+	max-width: 860px;
+	margin: 0 auto;
+}
+
+.about-simple-copy p{
+	font-size: 20px;
+	line-height: 1.7em;
+	color: var(--text-color);
+	margin-bottom: 22px;
+}
+
+.about-simple-copy p:last-child{
+	margin-bottom: 0;
+}
+
+.about-simple-values{
+	padding: 100px 0;
+}
+
+.about-simple-value-grid{
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+.about-simple-value-item{
+	height: 100%;
+	background-color: var(--white-color);
+	border: 1px solid var(--divider-color);
+	border-radius: 8px;
+	padding: 34px 28px;
+}
+
+.about-simple-value-item h3{
+	font-size: 24px;
+	margin-bottom: 18px;
+}
+
+.about-simple-value-item p{
+	color: var(--text-color);
+	margin-bottom: 0;
+}
+
+.about-simple-vision{
+	padding: 100px 0;
+}
+
+.about-simple-vision-content{
+	position: relative;
+	text-align: center;
+	padding-top: 34px;
+}
+
+.about-simple-vision-content::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90px;
+	height: 4px;
+	background-color: var(--accent-secondary-color);
+	border-radius: 100px;
+}
+
+.about-simple-vision-content .section-sub-title{
+	margin-bottom: 24px;
+}
+
+.about-simple-vision-content h2{
+	font-size: 48px;
+	line-height: 1.15em;
+	margin-bottom: 26px;
+}
+
+.about-simple-vision-content p{
+	max-width: 780px;
+	margin: 0 auto;
+	font-size: 20px;
+	line-height: 1.7em;
+}
+
+.about-simple-cta{
+	padding: 90px 0;
+	margin-bottom: 20px;
+}
+
+.about-simple-cta .section-title{
+	margin-bottom: 0;
+}
+
+.about-simple-cta-actions{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 14px;
+}
+
+.about-simple-cta-actions .btn-default{
+	width: 100%;
+	max-width: 300px;
+	text-align: center;
 }
 
 /************************************/
@@ -6249,6 +6397,14 @@ header.main-header .header-sticky.active{
 	.page-header-box h1{
         font-size: 44px;
 	}
+
+	.page-header.about-page-header{
+		padding: 180px 0 70px;
+	}
+
+	.page-header.about-page-header .page-header-box h1{
+		font-size: 54px;
+	}
     
     .our-approach{
         padding: 50px 0;
@@ -6294,6 +6450,35 @@ header.main-header .header-sticky.active{
     .our-process-item-content p{
         margin: 10px 0 0;
     }
+
+	.about-simple-section,
+	.about-simple-values,
+	.about-simple-vision,
+	.about-simple-cta{
+		padding: 50px 0;
+	}
+
+	.about-simple-intro h2{
+		font-size: 44px;
+	}
+
+	.about-simple-copy p,
+	.about-simple-vision-content p{
+		font-size: 18px;
+	}
+
+	.about-simple-value-grid{
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.about-simple-vision-content h2{
+		font-size: 36px;
+	}
+
+	.about-simple-cta-actions{
+		align-items: flex-start;
+		margin-top: 30px;
+	}
 
 	.page-services{
         padding: 50px 0 20px;
@@ -6747,6 +6932,60 @@ header.main-header .header-sticky.active{
 		font-size: 18px;
 	}
 
+	.about-simple-section{
+		padding: 40px 0 30px;
+	}
+
+	.about-simple-values,
+	.about-simple-vision,
+	.about-simple-cta{
+		padding: 40px 0;
+	}
+
+	.about-simple-intro{
+		text-align: left;
+	}
+
+	.about-simple-intro h2{
+		font-size: 34px;
+		margin-bottom: 24px;
+	}
+
+	.about-simple-copy p,
+	.about-simple-vision-content p{
+		font-size: 16px;
+	}
+
+	.about-simple-value-grid{
+		grid-template-columns: 1fr;
+		gap: 14px;
+	}
+
+	.about-simple-value-item{
+		padding: 24px 22px;
+	}
+
+	.about-simple-value-item h3{
+		font-size: 20px;
+	}
+
+	.about-simple-vision-content{
+		text-align: left;
+	}
+
+	.about-simple-vision-content::before{
+		left: 0;
+		transform: none;
+	}
+
+	.about-simple-vision-content h2{
+		font-size: 28px;
+	}
+
+	.about-simple-cta-actions .btn-default{
+		max-width: 100%;
+	}
+
 	.who-we-image-box-1,
 	.who-we-image-box-2{
 		width: 100%;
@@ -6892,6 +7131,14 @@ header.main-header .header-sticky.active{
 	.page-header.project-page-header{
 		min-height: auto;
 		padding: 165px 0 45px;
+	}
+
+	.page-header.about-page-header{
+		padding: 150px 0 45px;
+	}
+
+	.page-header.about-page-header .page-header-box h1{
+		font-size: 44px;
 	}
 
 	.project-page-title{
@@ -7269,7 +7516,7 @@ header.main-header .header-sticky.active{
 /************************************/
 
 .dark-section.dark-section-prime{
-    background-image: url('../images/dark-section-bg-image-prime.png');
+    background-image: none;
 }
 
 .hero-prime{

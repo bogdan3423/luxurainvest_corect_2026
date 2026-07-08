@@ -26,14 +26,16 @@
 		function setHeaderHeight(){
 	 		$("header.active-sticky-header").css("height", $('header.active-sticky-header .header-sticky').outerHeight());
 		}	
-	
-		$window.on("scroll", function() {
-			var fromTop = $(window).scrollTop();
+
+		function updateStickyHeader(){
+			var fromTop = $window.scrollTop();
 			setHeaderHeight();
-			var headerHeight = $('header.active-sticky-header .header-sticky').outerHeight()
-			$("header.active-sticky-header .header-sticky").toggleClass("hide", (fromTop > headerHeight + 100));
-			$("header.active-sticky-header .header-sticky").toggleClass("active", (fromTop > 600));
-		});
+			$("header.active-sticky-header .header-sticky").toggleClass("active", (fromTop > 20));
+		}
+	
+		$window.on("scroll", updateStickyHeader);
+		$window.on("load", updateStickyHeader);
+		updateStickyHeader();
 	}	
 	
 	/* Slick Menu JS */
