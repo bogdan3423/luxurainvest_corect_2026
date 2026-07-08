@@ -5,9 +5,17 @@
 	var $body = $('body'); 
 
 	/* Preloader Effect */
-	$window.on('load', function(){
-		$(".preloader").fadeOut(600);
-	});
+	var preloaderHidden = false;
+	function hidePreloader(){
+		if(preloaderHidden){
+			return;
+		}
+		preloaderHidden = true;
+		$(".preloader").stop(true, true).fadeOut(250);
+	}
+
+	$window.on('load', hidePreloader);
+	setTimeout(hidePreloader, 800);
 
 	/* Sticky Header */	
 	if($('.active-sticky-header').length){
