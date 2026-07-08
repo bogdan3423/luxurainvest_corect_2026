@@ -11,11 +11,11 @@
 			return;
 		}
 		preloaderHidden = true;
-		$(".preloader").stop(true, true).fadeOut(250);
+		$(".preloader").stop(true, true).fadeOut(120);
 	}
 
 	$window.on('load', hidePreloader);
-	setTimeout(hidePreloader, 800);
+	setTimeout(hidePreloader, 250);
 
 	/* Sticky Header */	
 	if($('.active-sticky-header').length){
