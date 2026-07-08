@@ -1140,6 +1140,7 @@ header.main-header .header-sticky.active{
 
 .service-item{
     position: relative;
+	background: var(--primary-color);
     border-radius: 20px;
     min-height: 430px;
     height: calc(100% - 30px);
@@ -2321,22 +2322,14 @@ header.main-header .header-sticky.active{
 
 .cta-box{
 	position: relative;
-	background-image: url('../images/cta-box-bg-image.jpg');
+	background-color: var(--primary-color);
+	background-image: none;
 	padding: 100px 0;
 	overflow: hidden;
 }
 
 .cta-box:before{
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	background: linear-gradient(270deg, transparent 0%, rgba(4, 6, 24, 0.70) 100%);
-	z-index: 1;
+	display: none;
 }
 
 .cta-box .container{
@@ -5380,6 +5373,18 @@ header.main-header .header-sticky.active{
 	color: var(--accent-secondary-color);
 }
 
+.contact-info-item .contact-main-email{
+	font-size: 28px;
+	font-weight: 600;
+	line-height: 1.2em;
+	margin-top: 16px;
+}
+
+.contact-info-item .contact-main-email a{
+	color: var(--accent-secondary-color);
+	word-break: break-word;
+}
+
 .contact-info-item h2 a:hover,
 .contact-info-item h3 a:hover,
 .contact-info-item p a:hover{
@@ -7487,6 +7492,10 @@ header.main-header .header-sticky.active{
 
 	.contact-info-item .contact-main-phone{
 		font-size: 34px;
+	}
+
+	.contact-info-item .contact-main-email{
+		font-size: 22px;
 	}
 
     .contact-info-item h3,
