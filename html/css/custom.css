@@ -1096,18 +1096,21 @@ header.main-header .header-sticky.active{
 }
 
 .about-counter-item-list{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+    gap: 28px 36px;
+	align-items: start;
     margin-top: 60px;
 }
 
 .about-counter-item{
-    width: calc(33.33% - 33.33px);
+    min-width: 0;
 }
 
 .about-counter-item h2{
-    font-size: 50px;
+    font-size: clamp(34px, 3.1vw, 50px);
+	line-height: 1.05em;
+	overflow-wrap: anywhere;
 }
 
 .about-counter-item p{
@@ -5543,11 +5546,12 @@ header.main-header .header-sticky.active{
 
     .about-counter-item-list{
         margin-top: 30px;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
 		gap: 30px;
     }
 
 	.about-counter-item{
-		width: calc(33.33% - 20px);
+		width: auto;
 	}
 
     .service-item{
@@ -6819,11 +6823,12 @@ header.main-header .header-sticky.active{
     }
 
     .about-counter-item-list{
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
         gap: 20px;
     }
 
     .about-counter-item{
-        width: calc(50% - 10px);
+        width: auto;
     }
 
     .about-counter-item h2{
