@@ -3684,6 +3684,10 @@ header.main-header .header-sticky.active{
 	margin-right: 15px;
 }
 
+.page-project-single .page-single-sidebar{
+	top: 150px;
+}
+
 .page-category-list{
 	background: var(--secondary-color);
 	border-radius: 20px;
